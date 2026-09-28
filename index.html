@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Adestya Levi Romdoni</title>
+    <style>
+        /* Reset dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Latar belakang gradasi yang lembut */
+        body {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Kartu konten */
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 600px;
+            width: 100%;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Animasi muncul */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Gaya Menu Navigasi */
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .menu button {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .menu button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .menu button.active {
+            background: #ffd700;
+            color: #1e3c72;
+            border-color: #ffd700;
+            font-weight: 700;
+        }
+
+        /* Konten Section */
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        h1 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 5px;
+            color: #e0e0e0;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        .nickname {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffd700;
+            background: rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            padding: 8px 25px;
+            border-radius: 50px;
+            margin-top: 5px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        p {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        /* Gaya Bio Data */
+        .bio-list {
+            text-align: left;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 15px;
+            padding: 15px 20px;
+        }
+
+        .bio-item {
+            display: flex;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.95rem;
+        }
+
+        .bio-item:last-child {
+            border-bottom: none;
+        }
+
+        .bio-label {
+            width: 40%;
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        .bio-value {
+            width: 60%;
+            color: #ffffff;
+            word-break: break-word;
+        }
+
+        /* Gaya Sosmed */
+        .sosmed-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .sosmed-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .sosmed-item:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .sosmed-item i {
+            font-style: normal;
+            font-size: 1.2rem;
+        }
+
+        /* Warna brand Sosmed */
+        .tiktok { background: #000000; }
+        .tiktok:hover { background: #1a1a1a; }
+
+        .instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .instagram:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+
+        .telegram { background: #0088cc; }
+        .telegram:hover { background: #0099e6; }
+
+        .whatsapp { background: #25D366; }
+        .whatsapp:hover { background: #20bd5a; }
+
+        /* Responsif untuk HP */
+        @media (max-width: 480px) {
+            h2 { font-size: 1.6rem; }
+            .nickname { font-size: 1.1rem; padding: 6px 18px; }
+            .welcome-card { padding: 20px; }
+            .bio-item { flex-direction: column; gap: 2px; }
+            .bio-label, .bio-value { width: 100%; }
+            .bio-value { padding-left: 5px; }
+            .menu button { padding: 6px 14px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="welcome-card">
+        <!-- Menu Navigasi -->
+        <div class="menu">
+            <button class="active" onclick="showSection('home', this)">🏠 Home</button>
+            <button onclick="showSection('bio', this)">📋 Bio Data</button>
+            <button onclick="showSection('sosmed', this)">🌐 Sosmed</button>
+        </div>
+
+        <!-- Section Home -->
+        <div id="home" class="content-section active">
+            <h1>Hai, saya</h1>
+            <h2>Adestya Levi Romdoni</h2>
+            <div class="nickname">Biasa dipanggil Lipay</div>
+            <p>Selamat datang di halaman web saya.</p>
+        </div>
+
+        <!-- Section Bio Data -->
+        <div id="bio" class="content-section">
+            <h2>📋 Bio Data</h2>
+            <div class="bio-list">
+                <div class="bio-item">
+                    <span class="bio-label">Nama</span>
+                    <span class="bio-value">Adestya Levi Romdoni</span>
+                </div>
+                <div class="bio-item">
+                    <span class="bio-label">Nama Panggilan</span>
+                    <span class="bio-value">Lipay</span>
+                </div>
+                <div class="bio-item">
+                    <span class="bio-label">Tempat/Tanggal Lahir</span>
+                    <span class="bio-value">Jakarta, 08 - 12 - 2009</span>
+                </div>
+                <div class="bio-item">
+                    <span class="bio-label">Hoby</span>
+                    <span class="bio-value">Main Futsal</span>
+                </div>
+                <div class="bio-item">
+                    <span class="bio-label">Cita - cita</span>
+                    <span class="bio-value">Belum diketahui</span>
+                </div>
+                <div class="bio-item">
+                    <span class="bio-label">Minuman Favorit</span>
+                    <span class="bio-value">Kopi ☕</span>
+                </div>
+                <div class="bio-item">
+                    <span class="bio-label">Rokok Favorit</span>
+                    <span class="bio-value">Magnum Filter, Aroma Ice Berry</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Sosmed -->
+        <div id="sosmed" class="content-section">
+            <h2>🌐 Sosial Media</h2>
+            <div class="sosmed-list">
+                <a href="https://www.tiktok.com/@userjjgjkl?_r=1&_t=ZS-9A7CyfvUmmr" target="_blank" class="sosmed-item tiktok">
+                    <i>🎵</i> TikTok
+                </a>
+                <a href="https://www.instagram.com/adsty.lev?stkn=MTZnYXY5MWhxb2treA==" target="_blank" class="sosmed-item instagram">
+                    <i>📸</i> Instagram
+                </a>
+                <a href="https://t.me/@lipay666" target="_blank" class="sosmed-item telegram">
+                    <i>✈️</i> Telegram
+                </a>
+                <a href="https://wa.me/qr/YWQHANQFUT5II1" target="_blank" class="sosmed-item whatsapp">
+                    <i>💬</i> WhatsApp
+                </a>
+            </div>
+            <p style="font-size: 0.8rem; margin-top: 15px; color: #aaa;">Klik salah satu untuk membuka link</p>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId, btn) {
+            // Sembunyikan semua section
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Tampilkan section yang dipilih
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update status tombol aktif
+            document.querySelectorAll('.menu button').forEach(button => {
+                button.classList.remove('active');
+            });
+            btn.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
